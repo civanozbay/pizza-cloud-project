@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @Controller
@@ -33,18 +34,19 @@ public class OrderController {
     }
 
     @PostMapping("/{pizzaId}")
-    public String processOrder(UUID pizzaId, PizzaOrder pizzaOrder) {
+    public String processOrder(@ModelAttribute("pizza")Pizza pizza, PizzaOrder pizzaOrder) {
 
         // Save the order
 
-        pizzaOrder.setPizza(getPizza(pizzaId));
-        return "redirect:/home";
+        pizzaOrder.setPizza(getPizza(pizza.getId()));
+        return "redirect:/orders/current";
     }
 
     //TODO
     private Pizza getPizza(UUID pizzaId) {
         // Get the pizza from repository based on it's id
-        return new Pizza();
+        List<Pizza> pizzas = pizzaRepository.readAll();
+        return pizzas.stream().filter(x -> x.getId().equals(pizzaId)).findFirst().get();
     }
 
 }
