@@ -2,6 +2,7 @@ package com.cydeo.pizzacloud.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Component;
 
 @NoArgsConstructor
 @Data

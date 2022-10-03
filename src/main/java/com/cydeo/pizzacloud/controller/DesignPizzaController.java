@@ -8,10 +8,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.UUID;
 
 @Controller
+
 public class DesignPizzaController {
 
     private PizzaRepository pizzaRepository;
@@ -32,7 +34,7 @@ public class DesignPizzaController {
     }
 
     @PostMapping("/design")
-    public String processPizza(@ModelAttribute("pizza")Pizza pizza) {
+    public String processPizza(Pizza pizza) {
 //        model.addAttribute("pizza",new Pizza());
 //        model.addAttribute("cheeses", DataGenerator.cheeseTypeList);
 //        model.addAttribute("sauces", DataGenerator.sauceTypeList);
