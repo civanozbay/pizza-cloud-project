@@ -35,10 +35,6 @@ public class DesignPizzaController {
 
     @PostMapping("/design")
     public String processPizza(Pizza pizza) {
-//        model.addAttribute("pizza",new Pizza());
-//        model.addAttribute("cheeses", DataGenerator.cheeseTypeList);
-//        model.addAttribute("sauces", DataGenerator.sauceTypeList);
-//        model.addAttribute("toppings", DataGenerator.toppingTypeList);
         pizza.setId(UUID.randomUUID());
         pizzaRepository.createPizza(pizza); // id ve soslar
 
